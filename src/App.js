@@ -9,10 +9,11 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pwdcheck, setPwdcheck] = useState("");
-  const [submit, setSubmit] = useState("");
 
   // State qui gère le contenu et l'affichage de mon message d'erreur
   const [errorMessage, setErrorMessage] = useState("");
+
+  let [result, setResult] = useState(false);
 
   // Fonction qui gère le onChange de l'input password
   const handlePasswordChange = (event) => {
@@ -20,7 +21,7 @@ function App() {
   };
   return (
     <>
-      <div className="form">
+      <div className={result ? "formHidden" : ""}>
         <h1>Create account</h1>
         <form
           onSubmit={(event) => {
@@ -31,6 +32,7 @@ function App() {
             }
             if (password === pwdcheck && password) {
               setErrorMessage("");
+              setResult("true");
               alert(
                 `Bravo, vous avez soumis votre formulaire. Votre email est ${email}`
               );
@@ -79,17 +81,23 @@ function App() {
               setPwdcheck(event.target.value);
             }}
           />
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          {/* {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} */}
           <input type="submit" value="Register" />
         </form>
       </div>
-      <div className="Steptwo">
+      <div className={result ? "" : "resultsHidden"}>
         <div>
-          {password ? <p>Email : {email}</p> : <p></p>}
-          {/* <h1>Results</h1>
+          <h1>Results</h1>
           <p>Email : {email}</p>
           <p>Nom : {name}</p>
-          <p>Mot de passe : {password}</p> */}
+          <p>Mot de passe : {password}</p>
+          <button
+            onClick={() => {
+              setResult((result = false));
+            }}
+          >
+            Edit your information
+          </button>
         </div>
       </div>
     </>

@@ -27,3 +27,11 @@ footer span {
   font-weight: bold;
   font-size: 15px;
 }
+
+.formHidden {
+  display: none;
+}
+
+.resultsHidden {
+  display: none;
+}
