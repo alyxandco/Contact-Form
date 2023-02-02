@@ -10,7 +10,9 @@ function App() {
     <>
       <div>
         <Form />
-        <Results />
+      </div>
+      <div>
+        <Steptwo />
       </div>
       <div>
         <Footer />
